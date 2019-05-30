@@ -2,12 +2,10 @@
     "name": "jrb/role-manager",
     "description": "A Role Manager for Laravel 5.*",
     "type": "library",
-    "authors": [
-        {
-            "name": "jrb",
-            "email": "jrb.youssef@gmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "jrb",
+        "email": "jrb.youssef@gmail.com"
+    }],
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
@@ -22,6 +20,13 @@
     "autoload-dev": {
         "psr-4": {
             "Jrb\\RoleManager\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jrb\\RoleManager\\RoleManagerServiceProvider"
+            ]
         }
     }
 }
