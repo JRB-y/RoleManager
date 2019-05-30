@@ -1,5 +1,5 @@
 {
-    "name": "jrb/role-manager",
+    "name": "jrb-y/role-manager",
     "description": "A Role Manager for Laravel 5.*",
     "type": "library",
     "authors": [{
