@@ -12,6 +12,6 @@ class RoleManagerTest extends TestCase
     public function startThePakage()
     {
         $this->assertSame(RoleManagerServiceProvider::class, 'Jrb\RoleManager\RoleManagerServiceProvider');
-        
+        //$this->assertSame(true, true);
     }
 }
