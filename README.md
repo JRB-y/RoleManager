@@ -38,7 +38,7 @@ php artisan vendor:publish --tag=roles
 Laravel will publish a `config/roles.php` configuration file.
 
 3 - Run the migrate
-> if you need to customize your models, tables and foreign keys, jump to [configuration](#configuration) <br>
+> :warning: if you need to customize your models, tables and foreign keys, jump to [configuration](#configuration) <br>
 before you run the migration.
 
 ```shell
@@ -48,6 +48,8 @@ before you run the migration.
 This command will create a `roles` and `role_user` tables.
 
 ## Configuration
+After you publish your configuration file, you can customize it:
+
 1. **Models**: You can configure your Role, User and UserRole models.
 2. **Tables**: You can configure your roles, users and user_role table.
 3. **Foreigners**: You can configure your roles and users foreign keys.
