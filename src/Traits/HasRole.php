@@ -1,7 +1,12 @@
 <?php
 namespace Jrb\RoleManager\Traits;
 
-trait HasRole{
+/**
+ * Trait HasRole
+ * @package Jrb\RoleManager
+ * @description This trait is the base core of the package. It's supposed to be used in the User model.
+ */
+trait HasRole {
 
     /**
      * $roles
@@ -17,11 +22,11 @@ trait HasRole{
      */
     public function roles()
     {
-        return $this->belongsToMany(config('roles.role'))->withTimestamps();
+        return $this->belongsToMany(config('roles.role.model'))->withTimestamps();
     }
 
     /**
-     * getRoles
+     * Get all the user's roles
      *
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
@@ -31,14 +36,12 @@ trait HasRole{
     }
 
     /**
-     * hasRole
-     *  check if the user has the given roles, it return true on the first valid
-     * todo: maybe refactor this function 'hasAnyOfRoles', and create another one 'hasAllRoles';
+     * Check if the user has any of the Roles passed in $roles.
      *
      * @param string|array $roles
      * @return boolean $hasRole
      */
-    public function hasRole($roles)
+    public function hasAnyOfRoles($roles)
     {
         // init hasRole as false
         $hasRole = false;
@@ -60,12 +63,12 @@ trait HasRole{
     }
 
     /**
-     * checkRole
+     * Check if the use has the given role.
      *
-     * @param string $role
-     * @return boolean $hasRole
+     * @param $role string
+     * @return bool
      */
-    protected function checkRole(string $role)
+    public function hasRole($role)
     {
         // init hasRole as false
         $hasRole = false;
@@ -82,19 +85,31 @@ trait HasRole{
     }
 
     /**
-     * attachRole
+     * Attach a Role.
+     * The role can be an id int or a name string
      *
-     * @param int $role id
+     * TODO: make it possible to pass an array or single role
+     *
+     * @param int|string $role
      * @return void
      */
     public function attachRole($role)
     {
-        $this->roles()->attach($role);
+        if(is_string($role)){
+            $roleName = $role;
+            $role = getInstanceFromConfig(config('roles.role.model'));
+            $role = $role->where('name', $roleName)->first()->id;
+        }
+
+        $this->roles()->syncWithoutDetaching($role);
     }
 
     /**
-     * detachRole
+     * Detach a Role
      *
+     * Works only with id.
+     *
+     * TODO: make it possible with a string
      * @param int $role id
      * @return void
      */
