@@ -14,9 +14,11 @@ return [
     |   # roles foreign key
     |--------------------------------------------------------------------------
     */
-    'role' => 'App\Role',
-    'roles_table' => 'roles',
-    'role_foreign_key' => 'role_id',
+    'role' => [
+        'model'     => '\Jrb\RoleManager\Models\Role',
+        'table'     => 'roles',
+        'foreign'   => 'role_id'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -26,9 +28,11 @@ return [
     |   # users foreign key
     |--------------------------------------------------------------------------
     */
-    'user' => 'App\User',
-    'users_table' => 'users',
-    'user_foreign_key' => 'user_id',
+    'user' => [
+        'model'     => 'App\User',
+        'table'     => 'users',
+        'foreign'   => 'user_id'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -38,6 +42,8 @@ return [
     |   $role->belongsToMany(User::class)
     |--------------------------------------------------------------------------
     */
-    'role.user' => 'App\RoleUser',
-    'roles_users_table' => 'roles_users',
+    'role_user' => [
+        'model' => 'App\RoleUser',
+        'table' => 'role_user'
+    ]
 ];
