@@ -13,7 +13,7 @@ class CreateRolesUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create(config('roles.role_user.table'), function (Blueprint $table) {
             $table->bigIncrements('id');
 
             // user_id foreign
@@ -35,6 +35,6 @@ class CreateRolesUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles_users');
+        Schema::drop(config('roles.role_user.table'));
     }
 }

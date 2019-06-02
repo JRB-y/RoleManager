@@ -13,7 +13,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create("roles", function (Blueprint $table) {
+        Schema::create(config('roles.role.table'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop("roles");
+        Schema::drop(config('roles.role.table'));
     }
 }
