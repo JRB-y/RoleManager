@@ -1,8 +1,8 @@
-Jrb Role Manger (Laravel 5.*)
+🧠 Role Manger (Laravel 5.*)
 ========================
 A lightweight and simple Laravel package to manage Roles.
 This package is made for the purpose of becoming familiar with the contributions. <br>
-So all the contributions are welcome.
+Feel free to make some pull requests ✌️
 
 ## Contents
 - [Installation](#installation)
